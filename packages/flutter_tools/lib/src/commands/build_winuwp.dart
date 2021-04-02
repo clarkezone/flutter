@@ -19,7 +19,7 @@ import 'build.dart';
 
 /// A command to build a Windows UWP desktop target.
 class BuildWindowsUwpCommand extends BuildSubCommand {
-  BuildWindowsUwpCommand({ bool verboseHelp = false }) {
+  BuildWindowsUwpCommand({bool verboseHelp = false}) {
     addCommonDesktopBuildOptions(verboseHelp: verboseHelp);
   }
 
@@ -27,13 +27,16 @@ class BuildWindowsUwpCommand extends BuildSubCommand {
   final String name = 'winuwp';
 
   @override
-  bool get hidden => !featureFlags.isWindowsUwpEnabled || !globals.platform.isWindows;
+  bool get hidden =>
+      !featureFlags.isWindowsUwpEnabled || !globals.platform.isWindows;
 
   @override
-  Future<Set<DevelopmentArtifact>> get requiredArtifacts async => <DevelopmentArtifact>{
-    // TODO(flutter): add a windows_uwp artifact here once that is updated.
-    // https://github.com/flutter/flutter/issues/78627
-  };
+  Future<Set<DevelopmentArtifact>> get requiredArtifacts async =>
+      <DevelopmentArtifact>{
+        // TODO(flutter): add a windows_uwp artifact here once that is updated.
+        // https://github.com/flutter/flutter/issues/78627
+        DevelopmentArtifact.windows,
+      };
 
   @override
   String get description => 'Build a Windows UWP desktop application.';
